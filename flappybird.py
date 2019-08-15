@@ -8,6 +8,7 @@ import random
 
 class FlappyBird:
     def __init__(self):
+        self.CONST_GRAVITY=2;
         self.screen = pygame.display.set_mode((400, 708))
         self.bird = pygame.Rect(65, 50, 50, 50)
         self.background = pygame.image.load("assets/background.png").convert()
@@ -21,7 +22,7 @@ class FlappyBird:
         self.birdY = 350
         self.jump = 0
         self.jumpSpeed = 10
-        self.gravity = 5
+        self.gravity = self.CONST_GRAVITY
         self.dead = False
         self.sprite = 0
         self.counter = 0
@@ -62,7 +63,7 @@ class FlappyBird:
             self.counter = 0
             self.wallx = 400
             self.offset = random.randint(-110, 110)
-            self.gravity = 5
+            self.gravity = self.CONST_GRAVITY
 
     def run(self):
         clock = pygame.time.Clock()
@@ -75,7 +76,7 @@ class FlappyBird:
                     sys.exit()
                 if (event.type == pygame.KEYDOWN or event.type == pygame.MOUSEBUTTONDOWN) and not self.dead:
                     self.jump = 17
-                    self.gravity = 5
+                    self.gravity = self.CONST_GRAVITY
                     self.jumpSpeed = 10
 
             self.screen.fill((255, 255, 255))
